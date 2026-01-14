@@ -31,7 +31,7 @@ const AudioPlayer = ({ onPlay }: AudioPlayerProps) => {
     };
 
     const handleEnded = () => {
-      setIsPlaying(false);
+      // Com loop ativo, apenas reseta o progresso visual
       setProgress(0);
     };
 
@@ -80,7 +80,7 @@ const AudioPlayer = ({ onPlay }: AudioPlayerProps) => {
 
   return (
     <div className="card-elevated">
-      <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" />
+      <audio ref={audioRef} src={AUDIO_SRC} preload="metadata" loop />
       
       {hasError && (
         <div className="mb-4 rounded-lg bg-destructive/10 p-3 text-center text-sm text-destructive">
