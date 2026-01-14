@@ -5,7 +5,7 @@ import AudioPlayer from "@/components/AudioPlayer";
 import HomeButtons from "@/components/HomeButtons";
 import ActivationWizard from "@/components/ActivationWizard";
 import AdvancedMode from "@/components/AdvancedMode";
-import { Scissors, Download } from "lucide-react";
+import { Scissors, Download, Music } from "lucide-react";
 import capaImage from "@/assets/capa-sete-livramentos.jpeg";
 
 type View = "home" | "wizard" | "advanced";
@@ -64,6 +64,19 @@ const Index = () => {
               onPlayClick={handlePlayClick}
               onActivateClick={handleActivateClick}
             />
+
+            {/* YouTube Music link */}
+            <div className="text-center">
+              <a
+                href="https://music.youtube.com/watch?v=MRxNr4MvmGU&si=Ck6uaTcNpzmQwHKN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                <Music className="w-4 h-4" />
+                Ouvir música completa no YouTube Music
+              </a>
+            </div>
 
             {/* Advanced mode link */}
             <div className="text-center pt-4">
