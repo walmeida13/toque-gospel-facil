@@ -69,7 +69,7 @@ const Index = () => {
             {/* YouTube Music links */}
             <div className="text-center space-y-3">
               <a
-                href="https://music.youtube.com/watch?v=MRxNr4MvmGU&si=Ck6uaTcNpzmQwHKN"
+                href="https://music.youtube.com/playlist?list=PLQRCG5G25J8EXEw6S2V_qo70C3EC9eEwi&si=ny0XU8xvo0gYKokW"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-red-700 hover:text-red-600 transition-colors font-medium"
