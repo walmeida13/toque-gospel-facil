@@ -6,6 +6,7 @@ import HomeButtons from "@/components/HomeButtons";
 import ActivationWizard from "@/components/ActivationWizard";
 import AdvancedMode from "@/components/AdvancedMode";
 import { Scissors, Download } from "lucide-react";
+import capaImage from "@/assets/capa-sete-livramentos.jpeg";
 
 type View = "home" | "wizard" | "advanced";
 
@@ -36,8 +37,17 @@ const Index = () => {
 
         {currentView === "home" && (
           <div className="animate-slide-up space-y-6">
+            {/* Cover image */}
+            <div className="card-elevated overflow-hidden p-0">
+              <img 
+                src={capaImage} 
+                alt="Os Sete Livramentos - Capa" 
+                className="w-full h-auto rounded-2xl"
+              />
+            </div>
+
             {/* Song title card */}
-            <div className="card-elevated text-center">
+            <div className="text-center">
               <h2 className="text-2xl font-extrabold text-gradient mb-1">
                 Os Sete Livramentos
               </h2>
