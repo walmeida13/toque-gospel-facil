@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import AudioPlayer from "@/components/AudioPlayer";
 import HomeButtons from "@/components/HomeButtons";
 import ActivationWizard from "@/components/ActivationWizard";
 import AdvancedMode from "@/components/AdvancedMode";
-import { Scissors } from "lucide-react";
+import { Scissors, Download } from "lucide-react";
 
 type View = "home" | "wizard" | "advanced";
 
@@ -75,8 +76,19 @@ const Index = () => {
           <AdvancedMode onBack={handleBack} />
         )}
 
+        {/* Install link */}
+        <div className="mt-6 text-center">
+          <Link 
+            to="/install" 
+            className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Instalar app no celular
+          </Link>
+        </div>
+
         {/* Footer */}
-        <footer className="mt-8 text-center text-xs text-muted-foreground">
+        <footer className="mt-6 text-center text-xs text-muted-foreground">
           <p>Toque Gospel © 2026</p>
           <p className="mt-1">Feito com ❤️ para a comunidade gospel</p>
         </footer>
