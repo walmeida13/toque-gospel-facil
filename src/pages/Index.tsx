@@ -5,6 +5,7 @@ import AudioPlayer from "@/components/AudioPlayer";
 import HomeButtons from "@/components/HomeButtons";
 import ActivationWizard from "@/components/ActivationWizard";
 import AdvancedMode from "@/components/AdvancedMode";
+import ShareButton from "@/components/ShareButton";
 import { Scissors, Download, Music } from "lucide-react";
 import capaImage from "@/assets/capa-sete-livramentos.jpeg";
 
@@ -76,6 +77,11 @@ const Index = () => {
                 <Music className="w-4 h-4" />
                 Ouvir música completa no YouTube Music
               </a>
+            </div>
+
+            {/* Share button */}
+            <div className="text-center">
+              <ShareButton />
             </div>
 
             {/* Advanced mode link */}
