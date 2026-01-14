@@ -66,8 +66,8 @@ const Index = () => {
               onActivateClick={handleActivateClick}
             />
 
-            {/* YouTube Music link */}
-            <div className="text-center">
+            {/* YouTube Music links */}
+            <div className="text-center space-y-3">
               <a
                 href="https://music.youtube.com/watch?v=MRxNr4MvmGU&si=Ck6uaTcNpzmQwHKN"
                 target="_blank"
@@ -77,6 +77,17 @@ const Index = () => {
                 <Music className="w-4 h-4" />
                 Ouvir música completa no YouTube Music
               </a>
+              <div>
+                <a
+                  href="https://music.youtube.com/playlist?list=PLJcmnpA6dRhv7Ks484xBjYkLP0NfYzL6-&si=uOCwhGZMFP8DF_Og"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-secondary-foreground hover:text-secondary-foreground/80 transition-colors font-medium"
+                >
+                  <Music className="w-4 h-4" />
+                  🎤 Músicas de Rafael de Lins
+                </a>
+              </div>
             </div>
 
             {/* Share button */}
