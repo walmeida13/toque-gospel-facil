@@ -72,7 +72,7 @@ const Index = () => {
                 href="https://music.youtube.com/watch?v=MRxNr4MvmGU&si=Ck6uaTcNpzmQwHKN"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                className="inline-flex items-center gap-2 text-sm text-red-700 hover:text-red-600 transition-colors font-medium"
               >
                 <Music className="w-4 h-4" />
                 Ouvir música completa no YouTube Music
