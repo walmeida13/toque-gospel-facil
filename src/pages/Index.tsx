@@ -6,7 +6,7 @@ import HomeButtons from "@/components/HomeButtons";
 import ActivationWizard from "@/components/ActivationWizard";
 import AdvancedMode from "@/components/AdvancedMode";
 import ShareButton from "@/components/ShareButton";
-import { Scissors, Download, Music } from "lucide-react";
+import { Scissors, Download, Music, Video } from "lucide-react";
 import capaImage from "@/assets/capa-sete-livramentos.jpeg";
 
 type View = "home" | "wizard" | "advanced";
@@ -77,6 +77,17 @@ const Index = () => {
                 <Music className="w-4 h-4" />
                 Ouvir música completa no YouTube Music
               </a>
+              <div>
+                <a
+                  href="https://youtu.be/WrpcG0ip0e0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-red-700 hover:text-red-600 transition-colors font-medium"
+                >
+                  <Video className="w-4 h-4" />
+                  🎬 Assistir VideoClip Oficial
+                </a>
+              </div>
               <div>
                 <a
                   href="https://music.youtube.com/playlist?list=PLJcmnpA6dRhv7Ks484xBjYkLP0NfYzL6-&si=uOCwhGZMFP8DF_Og"
