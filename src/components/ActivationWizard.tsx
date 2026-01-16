@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Download, FolderOpen, Settings, Check, ChevronDown, ChevronUp, ArrowLeft, Phone, User } from "lucide-react";
+import { Download, FolderOpen, Settings, Check, ChevronDown, ChevronUp, ArrowLeft, Phone, User, Zap, Loader2, AlertCircle } from "lucide-react";
+import { useRingtone } from "@/hooks/useRingtone";
 
 interface ActivationWizardProps {
   onBack: () => void;
@@ -17,6 +18,24 @@ const ActivationWizard = ({ onBack }: ActivationWizardProps) => {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [showBrands, setShowBrands] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [showManualMode, setShowManualMode] = useState(false);
+  
+  const { 
+    isNativeAndroid, 
+    isLoading: isRingtoneLoading, 
+    isSettingRingtone, 
+    error: ringtoneError, 
+    success: ringtoneSuccess,
+    setRingtone 
+  } = useRingtone();
+
+  const handleAutoSetRingtone = async () => {
+    const success = await setRingtone();
+    if (success) {
+      setCompletedSteps([1, 2, 3]);
+      setCurrentStep(3);
+    }
+  };
 
   const handleDownload = () => {
     // Trigger download
@@ -44,6 +63,99 @@ const ActivationWizard = ({ onBack }: ActivationWizardProps) => {
   };
 
   const selectedBrandData = BRANDS.find(b => b.id === selectedBrand);
+
+  // Show automatic mode for native Android
+  if (isNativeAndroid && !showManualMode && !isRingtoneLoading) {
+    return (
+      <div className="animate-slide-up">
+        <button
+          onClick={onBack}
+          className="mb-6 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="h-5 w-5" />
+          <span className="font-medium">Voltar</span>
+        </button>
+
+        <h2 className="mb-6 text-xl font-bold text-foreground">
+          Ativar Toque Automaticamente
+        </h2>
+
+        {ringtoneSuccess ? (
+          <div className="rounded-2xl bg-success/10 border border-success/20 p-6 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-success/20">
+              <Check className="h-8 w-8 text-success" />
+            </div>
+            <p className="text-xl font-bold text-success">
+              🎉 Toque ativado com sucesso!
+            </p>
+            <p className="mt-2 text-muted-foreground">
+              Agora você receberá chamadas com "Os Sete Livramentos"
+            </p>
+            <button
+              onClick={onBack}
+              className="btn-hero mt-6 w-full py-4"
+            >
+              Voltar ao início
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
+                  <Zap className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground">Modo Automático</h3>
+                  <p className="text-sm text-muted-foreground">Um toque e pronto!</p>
+                </div>
+              </div>
+              
+              <p className="text-muted-foreground mb-4">
+                Toque no botão abaixo para definir o toque automaticamente como toque de chamada do seu celular.
+              </p>
+
+              {ringtoneError && (
+                <div className="mb-4 flex items-start gap-2 rounded-xl bg-destructive/10 p-3 text-sm text-destructive">
+                  <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
+                  <span>{ringtoneError}</span>
+                </div>
+              )}
+
+              <button
+                onClick={handleAutoSetRingtone}
+                disabled={isSettingRingtone}
+                className="btn-hero flex w-full items-center justify-center gap-2 py-4 text-lg disabled:opacity-50"
+              >
+                {isSettingRingtone ? (
+                  <>
+                    <Loader2 className="h-6 w-6 animate-spin" />
+                    <span>Definindo toque...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-6 w-6" />
+                    <span>Definir toque automaticamente</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="tip-box">
+              <p>💡 Se aparecer uma tela de permissão, toque em <strong>"Permitir"</strong> e volte ao app.</p>
+            </div>
+
+            <button
+              onClick={() => setShowManualMode(true)}
+              className="w-full text-center text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+            >
+              Prefere fazer manualmente? Clique aqui
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="animate-slide-up">
