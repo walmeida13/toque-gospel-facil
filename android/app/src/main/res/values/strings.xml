@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Os Sete Livramentos</string>
+    <string name="title_activity_main">Os Sete Livramentos</string>
+    <string name="package_name">com.setelivramentos.toque</string>
+    <string name="custom_url_scheme">com.setelivramentos.toque</string>
+</resources>

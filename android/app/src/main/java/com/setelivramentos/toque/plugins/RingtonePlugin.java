@@ -1,4 +1,4 @@
-package app.lovable.ringtone;
+package com.setelivramentos.toque.plugins;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
